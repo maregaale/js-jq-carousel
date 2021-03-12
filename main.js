@@ -25,20 +25,46 @@ $(function() {
     }
   }
 
+  // funzione scorrimento in avanti delle immagini
+  function runningAfterImg(img, firstImg) {
+    // scorrimento immagini
+    var img;
+    var firstImg;
+    pushAfterClassActive(img, firstImg);
+  }
+
+  // funzione scorrimento in avanti dei bullets
+  function runningAfterBullets(bullet, firstBullet) {
+    // scorrimento immagini
+    var bullet;
+    var firstBullet;
+    pushAfterClassActive(bullet, firstBullet);
+  }
+
+  // funzione scorrimento indietro delle immagini
+  function runningBeforeImg(img, lastImg) {
+    // scorrimento immagini
+    var img;
+    var lastImg;
+    pushBeforeClassActive(img, lastImg);
+  }
+
+  // funzione scorrimento indietro dei bullets
+  function runningBeforeBullets(bullet, lastBullet) {
+    // scorrimento immagini
+    var bullet;
+    var lastBullet;
+    pushBeforeClassActive(bullet, lastBullet);
+  }
 
   // 1. aggiungo evento con scorrimento al click su icona 'next'
   nextIcon.click(
     function () {
       // scorrimento immagini
-      var imgAct = $(".images img.active");
-      var firstImg = $(".images img.first");
-      pushAfterClassActive(imgAct, firstImg);
+      runningAfterImg($(".images img.active"), $(".images img.first"));
 
       // scorrimento bullets
-      var bulletAct = $(".nav i.active");
-      var firstBullet = $(".nav i.first");
-      pushAfterClassActive(bulletAct, firstBullet);
-
+      runningAfterBullets($(".nav i.active"), $(".nav i.first"));
     }
   );
 
@@ -46,15 +72,31 @@ $(function() {
   prevIcon.click(
     function () {
       // scorrimento immagini
-      var imgAct = $(".images img.active");
-      var lastImg = $(".images img.last");
-      pushBeforeClassActive(imgAct, lastImg);
+      runningBeforeImg($(".images img.active"), $(".images img.last"));
 
       // scorrimento bullets
-      var bulletAct = $(".nav i.active");
-      var lastBullet = $(".nav i.last");
-      pushBeforeClassActive(bulletAct, lastBullet);
+      runningBeforeBullets($(".nav i.active"), $(".nav i.last"));
     }
   );
-  
+
+  // 3. aggiunto scorrimento utilizzando le freccette della tastiera
+  $(document).keydown(
+    function (e) {
+      if (e.keyCode == "37") {
+        // scorrimento immagini
+        runningBeforeImg($(".images img.active"), $(".images img.last"));
+
+        // scorrimento bullets
+        runningBeforeBullets($(".nav i.active"), $(".nav i.last"));
+
+      } else if (e.keyCode == "39") {
+        // scorrimento immagini
+        runningAfterImg($(".images img.active"), $(".images img.first"));
+
+        // scorrimento bullets
+        runningAfterBullets($(".nav i.active"), $(".nav i.first"));
+      }
+    }
+  );
+
 });
