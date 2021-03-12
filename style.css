@@ -7,7 +7,7 @@
 .container {
     display: flex;
     margin: 0 auto;
-    width: 70%;
+    width: 80%;
     height: 100vh;
 }
 .slider-wrapper {
