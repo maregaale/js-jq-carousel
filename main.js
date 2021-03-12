@@ -25,46 +25,31 @@ $(function() {
     }
   }
 
-  // funzione scorrimento in avanti delle immagini
-  function runningAfterImg(img, firstImg) {
+  // funzione scorrimento in avanti di elementi
+  function runningAfterElement(element, firstElement) {
     // scorrimento immagini
-    var img;
-    var firstImg;
-    pushAfterClassActive(img, firstImg);
+    var element;
+    var firstElement;
+    pushAfterClassActive(element, firstElement);
   }
 
-  // funzione scorrimento in avanti dei bullets
-  function runningAfterBullets(bullet, firstBullet) {
-    // scorrimento immagini
-    var bullet;
-    var firstBullet;
-    pushAfterClassActive(bullet, firstBullet);
-  }
 
-  // funzione scorrimento indietro delle immagini
-  function runningBeforeImg(img, lastImg) {
+  // funzione scorrimento indietro di elementi
+  function runningBeforeElement(element, lastElement) {
     // scorrimento immagini
-    var img;
-    var lastImg;
-    pushBeforeClassActive(img, lastImg);
-  }
-
-  // funzione scorrimento indietro dei bullets
-  function runningBeforeBullets(bullet, lastBullet) {
-    // scorrimento immagini
-    var bullet;
-    var lastBullet;
-    pushBeforeClassActive(bullet, lastBullet);
+    var element;
+    var lastElement;
+    pushBeforeClassActive(element, lastElement);
   }
 
   // 1. aggiungo evento con scorrimento al click su icona 'next'
   nextIcon.click(
     function () {
       // scorrimento immagini
-      runningAfterImg($(".images img.active"), $(".images img.first"));
+      runningAfterElement($(".images img.active"), $(".images img.first"));
 
       // scorrimento bullets
-      runningAfterBullets($(".nav i.active"), $(".nav i.first"));
+      runningAfterElement($(".nav i.active"), $(".nav i.first"));
     }
   );
 
@@ -72,10 +57,10 @@ $(function() {
   prevIcon.click(
     function () {
       // scorrimento immagini
-      runningBeforeImg($(".images img.active"), $(".images img.last"));
+      runningBeforeElement($(".images img.active"), $(".images img.last"));
 
       // scorrimento bullets
-      runningBeforeBullets($(".nav i.active"), $(".nav i.last"));
+      runningBeforeElement($(".nav i.active"), $(".nav i.last"));
     }
   );
 
@@ -84,17 +69,17 @@ $(function() {
     function (e) {
       if (e.keyCode == "37") {
         // scorrimento immagini
-        runningBeforeImg($(".images img.active"), $(".images img.last"));
+        runningBeforeElement($(".images img.active"), $(".images img.last"));
 
         // scorrimento bullets
-        runningBeforeBullets($(".nav i.active"), $(".nav i.last"));
+        runningBeforeElement($(".nav i.active"), $(".nav i.last"));
 
       } else if (e.keyCode == "39") {
         // scorrimento immagini
-        runningAfterImg($(".images img.active"), $(".images img.first"));
+        runningAfterElement($(".images img.active"), $(".images img.first"));
 
         // scorrimento bullets
-        runningAfterBullets($(".nav i.active"), $(".nav i.first"));
+        runningAfterElement($(".nav i.active"), $(".nav i.first"));
       }
     }
   );
