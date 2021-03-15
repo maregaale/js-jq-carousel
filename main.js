@@ -43,11 +43,11 @@ $(function() {
   }
 
   // funzione per reggiungere l'immagine corrispondente al bullet selezionato
-  function checkBullets(element1, element2, element3, element4) {
-    element1.removeClass("active");
-    element2.removeClass("active");
-    element3.addClass("active");
-    element4.addClass("active");
+  function checkBullets(activeImg, bulletActive, thisImg, thisBullet) {
+    activeImg.removeClass("active");
+    bulletActive.removeClass("active");
+    thisImg.addClass("active");
+    thisBullet.addClass("active");
   }
 
 
