@@ -42,6 +42,14 @@ $(function() {
     pushBeforeClassActive(element, lastElement);
   }
 
+  // funzione per reggiungere l'immagine corrispondente al bullet selezionato
+  function checkBullets(element1, element2, element3, element4) {
+    element1.removeClass("active");
+    element2.removeClass("active");
+    element3.addClass("active");
+    element4.addClass("active");
+  }
+
 
 
   // 1. aggiungo evento con scorrimento al click su icona 'next'
@@ -93,27 +101,14 @@ $(function() {
   bullet.click(
     function () {
       if ($(this).hasClass("first") == true) {
-        $(".images img.active").removeClass("active");
-        $(".nav i.active").removeClass("active");
-        $(".images img.first").addClass("active");
-        $(".nav i.first").addClass("active");
+        checkBullets ($(".images img.active"), $(".nav i.active"), $(".images img.first"), $(".nav i.first"));
       } else if ($(this).hasClass("second") == true) {
-        $(".images img.active").removeClass("active");
-        $(".nav i.active").removeClass("active");
-        $(".images img.second").addClass("active");
-        $(".nav i.second").addClass("active");
+        checkBullets ($(".images img.active"), $(".nav i.active"), $(".images img.second"), $(".nav i.second"));
       } else if ($(this).hasClass("third") == true) {
-        $(".images img.active").removeClass("active");
-        $(".nav i.active").removeClass("active");
-        $(".images img.third").addClass("active");
-        $(".nav i.third").addClass("active");
+        checkBullets ($(".images img.active"), $(".nav i.active"),  $(".images img.third"), $(".nav i.third"));
       } else if ($(this).hasClass("last") == true) {
-        $(".images img.active").removeClass("active");
-        $(".nav i.active").removeClass("active");
-        $(".images img.last").addClass("active");
-        $(".nav i.last").addClass("active");
+        checkBullets ($(".images img.active"), $(".nav i.active"), $(".images img.last"), $(".nav i.last"));
       }
     }
   );
-
 });
