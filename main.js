@@ -111,4 +111,9 @@ $(function() {
       }
     }
   );
+
+  // autoplay
+  setInterval(function () {
+    runningAfterElement($(".images img.active"), $(".images img.first"));
+  }, 2000);
 });
