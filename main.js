@@ -4,6 +4,7 @@ $(function() {
   var nextIcon = $(".next");
   var prevIcon = $(".prev");
   var bullet = $(".nav i");
+  var i = "goOn";
 
   // FUNZIONI:
   // funzione che sposta la classe 'active' ai successivi
@@ -112,9 +113,22 @@ $(function() {
     }
   );
 
-  // autoplay
-  var intervalAfter = setInterval(function () {
-    runningAfterElement($(".images img.active"), $(".images img.first"));
-    runningAfterElement($(".nav i.active"), $(".nav i.first"));
+  // autoplay con ritorno
+  setInterval(function () {
+
+    if ($(".nav i.active").hasClass("first")) {
+      i = "goOn";
+    } else if ($(".nav i.active").hasClass("last")) {
+      i = "goBack";
+    }
+
+    if (i == "goOn") {
+      runningAfterElement($(".images img.active"), $(".images img.first"));
+      runningAfterElement($(".nav i.active"), $(".nav i.first"));
+    } else if (i == "goBack") {
+      runningBeforeElement($(".images img.active"), $(".images img.last"));
+      runningBeforeElement($(".nav i.active"), $(".nav i.last"));
+    }
+
   }, 2000);
 });
