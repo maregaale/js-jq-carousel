@@ -113,7 +113,8 @@ $(function() {
   );
 
   // autoplay
-  setInterval(function () {
+  var intervalAfter = setInterval(function () {
     runningAfterElement($(".images img.active"), $(".images img.first"));
+    runningAfterElement($(".nav i.active"), $(".nav i.first"));
   }, 2000);
 });
